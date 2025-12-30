@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: imgfetcher-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: dist/*
+          path: dist/imgfetcher-*
 
   release:
     name: Create GitHub Release
@@ -62,8 +62,10 @@ jobs:
 
       - name: Flatten artifacts
         run: |
-          find dist -type f -exec mv {} dist/ \;
-          find dist -type d -empty -delete
+          mkdir -p release
+          find dist -type f -exec mv {} release/ \;
+          rm -rf dist
+          mv release dist
 
       - name: Add font
         run: |
