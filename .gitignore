@@ -1,5 +1,5 @@
 images/
 bin/
-*.yml
 .DS_Store
 .idea/
+items.yml
