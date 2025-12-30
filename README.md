@@ -105,6 +105,135 @@ You can modify this file anytime without touching Go code.
 
 ---
 
+Here you go — **clean, proper, copy-paste-ready Markdown**, formatted exactly how it should appear in a `README.md`.
+
+---
+
+## ⬇️ Downloading the Binary (Recommended)
+
+Replace `v0.1.4` with the latest version if needed.
+
+---
+
+### 🐧 Linux (amd64)
+
+```bash
+curl -L -o imgfetcher \
+  https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-linux-amd64
+
+chmod +x imgfetcher
+./imgfetcher generate --input home_items.yaml
+```
+
+---
+
+### 🐧 Linux (arm64)
+
+```bash
+curl -L -o imgfetcher \
+  https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-linux-arm64
+
+chmod +x imgfetcher
+./imgfetcher generate --input home_items.yaml
+```
+
+---
+
+### 🍎 macOS (Apple Silicon – arm64)
+
+```bash
+curl -L -o imgfetcher \
+  https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-darwin-arm64
+
+chmod +x imgfetcher
+./imgfetcher generate --input home_items.yaml
+```
+
+---
+
+### 🍎 macOS (Intel – amd64)
+
+```bash
+curl -L -o imgfetcher \
+  https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-darwin-amd64
+
+chmod +x imgfetcher
+./imgfetcher generate --input home_items.yaml
+```
+
+> 💡 **macOS security note**
+> If you see a security warning, run:
+>
+> ```bash
+> xattr -d com.apple.quarantine imgfetcher
+> ```
+
+---
+
+### 🪟 Windows (PowerShell)
+
+#### Windows (amd64)
+
+```powershell
+Invoke-WebRequest `
+  -Uri https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-windows-amd64.exe `
+  -OutFile imgfetcher.exe
+
+.\imgfetcher.exe generate --input home_items.yaml
+```
+
+#### Windows (arm64)
+
+```powershell
+Invoke-WebRequest `
+  -Uri https://github.com/kamal-github/imgfetcher/releases/download/v0.1.4/imgfetcher-windows-arm64.exe `
+  -OutFile imgfetcher.exe
+
+.\imgfetcher.exe generate --input home_items.yaml
+```
+
+---
+
+## 🔍 Verify Download (Optional but Recommended)
+
+Each release includes a `checksums.txt` file.
+
+### Linux / macOS
+
+```bash
+sha256sum -c checksums.txt
+```
+
+### Windows (PowerShell)
+
+```powershell
+Get-FileHash imgfetcher.exe -Algorithm SHA256
+```
+
+Compare the output with the values in `checksums.txt`.
+
+---
+
+## 🌍 Set Required Environment Variable
+
+Before running the tool, set your Pixabay API key.
+
+### Linux / macOS
+
+```bash
+export PIXABAY_API_KEY="your_pixabay_api_key"
+```
+
+### Windows (PowerShell)
+
+```powershell
+setx PIXABAY_API_KEY "your_pixabay_api_key"
+```
+
+> ⚠️ On Windows, restart the terminal after setting the variable.
+
+---
+
 ## 🚀 Usage
 
 ```bash
