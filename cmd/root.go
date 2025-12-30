@@ -12,6 +12,12 @@ var rootCmd = &cobra.Command{
 	Short: "Generate printable image cards for kids",
 	Long:  "imgfetcher downloads free images, labels them, and organizes them into printable cards",
 }
+var version = "dev"
+
+func init() {
+	rootCmd.Version = version
+	rootCmd.SetVersionTemplate("imgfetcher {{.Version}}\n")
+}
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {

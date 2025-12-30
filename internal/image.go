@@ -15,10 +15,18 @@ import (
 )
 
 const (
-	fontPath       = "./Roboto-Bold.ttf"
+	// fontPath       = "./Roboto-Bold.ttf"
 	labelBarHeight = 80
 	labelFontSize  = 48
 )
+
+func getFontPath() (string, error) {
+	exe, err := os.Executable()
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(filepath.Dir(exe), "Roboto-Bold.ttf"), nil
+}
 
 type pixabayResponse struct {
 	Hits []struct {
@@ -81,7 +89,7 @@ func fetchImageURL(item string, index int) (string, error) {
 	defer resp.Body.Close()
 
 	var result pixabayResponse
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+	if err = json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return "", err
 	}
 
@@ -111,6 +119,11 @@ func addLabel(img image.Image, text string) image.Image {
 	dc.Fill()
 
 	// text
+	fontPath, err := getFontPath()
+	if err == nil {
+		_ = dc.LoadFontFace(fontPath, labelFontSize)
+	}
+
 	_ = dc.LoadFontFace(fontPath, labelFontSize)
 	dc.SetRGB(1, 1, 1)
 	dc.DrawStringAnchored(
